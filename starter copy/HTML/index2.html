@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Lecture 3 - 17 Examples</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 25px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 750px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      color: #0077ff;
+      margin-top: 0;
+    }
+
+    button {
+      padding: 9px 15px;
+      margin: 8px 5px 8px 0;
+      border: none;
+      background-color: #0077ff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 8px;
+      margin-top: 8px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      display: block;
+      width: 250px;
+    }
+
+    img {
+      width: 220px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      margin: 10px 0;
+      transition: 0.3s;
+    }
+
+    .result {
+      color: green;
+      font-weight: bold;
+    }
+
+    .demo-box {
+      padding: 15px;
+      background-color: #eee;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    /* ============================= */
+    /* 16. :target Example */
+    /* ============================= */
+
+    .target-links a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      background-color: #0077ff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .target-section {
+      padding: 20px;
+      margin-top: 10px;
+      background-color: #eee;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    #homeSection:target {
+      background-color: lightblue;
+      padding: 35px;
+    }
+
+    #aboutSection:target {
+      background-color: lightgreen;
+      padding: 35px;
+    }
+
+    /* ============================= */
+    /* 17. Read More Example */
+    /* ============================= */
+
+    .read-box {
+      background-color: #eee;
+      padding: 15px;
+      border-radius: 8px;
+      max-width: 450px;
+    }
+
+    .read-box img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    #moreText {
+      display: none;
+    }
+
+    #readBtn {
+      background-color: transparent;
+      color: #0077ff;
+      padding: 0;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #readBtn:hover {
+      background-color: transparent;
+      color: #005fcc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>JavaScript Lecture 3 - 17 Examples</h1>
+
+
+  <!-- ===================================================== -->
+  <!-- 1. onclick -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>1. onclick</h2>
+    <p>الفكرة: لما أضغط على الزر، الصورة تصير مغبشة والنص يختفي.</p>
+
+    <button id="clickBtn">Click Me</button>
+
+    <img id="clickImg" src="https://picsum.photos/id/237/220/150">
+
+    <h3 id="clickText">This text will disappear</h3>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 2. onfocus -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>2. onfocus</h2>
+    <p>الفكرة: لما أضغط داخل input، يصير عليه تأثير.</p>
+
+    <input id="focusInput" type="text" placeholder="Click inside me">
+
+    <p id="focusResult" class="result">Waiting for focus...</p>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 3. onblur -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>3. onblur</h2>
+    <p>الفكرة: لما أطلع من input أو أضغط برا، يرجع للوضع الطبيعي.</p>
+
+    <input id="blurInput" type="text" placeholder="Click then leave">
+
+    <p id="blurResult" class="result">Click inside input then click outside</p>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 4. null -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>4. null</h2>
+    <p>الفكرة: null ترجع الخاصية للوضع الافتراضي.</p>
+
+    <h3 id="nullTitle">This title color can be removed</h3>
+
+    <button id="addColorBtn">Add Color</button>
+    <button id="removeColorBtn">Remove Color Using null</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 5. onkeyup -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>5. onkeyup</h2>
+    <p>الفكرة: يشتغل أول ما أكتب داخل input.</p>
+
+    <input id="keyupInput" type="text" placeholder="Start typing">
+
+    <p id="keyupResult" class="result">Your text will appear here...</p>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 6. input.value -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>6. input.value</h2>
+    <p>الفكرة: الكلام المكتوب داخل input هو value.</p>
+
+    <input id="valueInput" type="text" placeholder="Write something">
+
+    <button id="valueBtn">Show Input Value</button>
+
+    <p id="valueResult" class="result">Input value will appear here...</p>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 7. toUpperCase() -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>7. toUpperCase()</h2>
+    <p>الفكرة: تحويل الكتابة إلى حروف كبيرة Capital.</p>
+
+    <input id="upperInput" type="text" placeholder="Write small letters">
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 8. onchange -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>8. onchange</h2>
+    <p>الفكرة: يشتغل لما قيمة select تتغير.</p>
+
+    <select id="groupSelect">
+      <option>Group 1</option>
+      <option>Group 2</option>
+      <option>Group 3</option>
+      <option>Group 4</option>
+    </select>
+
+    <p id="changeResult" class="result">Choose a group...</p>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 9. onload -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>9. onload</h2>
+    <p>الفكرة: يشتغل أول ما الصفحة تعمل تحميل.</p>
+
+    <div id="loadBox" class="demo-box">
+      Page is not loaded yet...
+    </div>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 10. onmousemove -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>10. onmousemove</h2>
+    <p>الفكرة: لما أحرك الماوس فوق الصورة، الزر يتغير.</p>
+
+    <img id="moveImg" src="https://picsum.photos/id/1025/220/150">
+
+    <button id="moveBtn">Move mouse over image</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 11. onmouseout -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>11. onmouseout</h2>
+    <p>الفكرة: لما الماوس يطلع من الصورة، الزر يرجع طبيعي.</p>
+
+    <img id="outImg" src="https://picsum.photos/id/1062/220/150">
+
+    <button id="outBtn">Mouse out example</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 12. setInterval() -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>12. setInterval()</h2>
+    <p>الفكرة: تكرر تنفيذ الكود كل مدة معينة.</p>
+
+    <h3 id="intervalCounter">0</h3>
+
+    <button id="startIntervalBtn">Start Interval</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 13. clearInterval() -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>13. clearInterval()</h2>
+    <p>الفكرة: توقف التكرار الذي بدأ بـ setInterval.</p>
+
+    <h3 id="clearIntervalCounter">0</h3>
+
+    <button id="startClearIntervalBtn">Start Counter</button>
+    <button id="stopClearIntervalBtn">Stop Counter</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 14. setTimeout() -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>14. setTimeout()</h2>
+    <p>الفكرة: ينفذ الكود مرة واحدة فقط بعد مدة معينة.</p>
+
+    <h3 id="timeoutMsg">Click the button and wait 3 seconds</h3>
+
+    <button id="startTimeoutBtn">Start Timeout</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 15. clearTimeout() -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>15. clearTimeout()</h2>
+    <p>الفكرة: توقف setTimeout قبل ما يشتغل.</p>
+
+    <h3 id="clearTimeoutMsg">Message will appear after 5 seconds</h3>
+
+    <button id="startClearTimeoutBtn">Start Timer</button>
+    <button id="cancelTimeoutBtn">Cancel Timer</button>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 16. :target -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>16. :target</h2>
+    <p>الفكرة: لما أضغط على رابط مربوط بـ ID، السكشن صاحب الـ ID يتغير.</p>
+
+    <div class="target-links">
+      <a href="#homeSection">Home</a>
+      <a href="#aboutSection">About</a>
+    </div>
+
+    <section id="homeSection" class="target-section">
+      <h3>Home Section</h3>
+      <p>This section changes when you click Home.</p>
+    </section>
+
+    <section id="aboutSection" class="target-section">
+      <h3>About Section</h3>
+      <p>This section changes when you click About.</p>
+    </section>
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- 17. Read More / Read Less -->
+  <!-- ===================================================== -->
+  <div class="card">
+    <h2>17. Read More / Read Less</h2>
+    <p>الفكرة: نخفي جزء من النص داخل span، ونظهره عند الضغط على Read More.</p>
+
+    <div class="read-box">
+      <img src="https://picsum.photos/id/20/450/200">
+
+      <p>
+        JavaScript is very important for front-end development.
+        <span id="moreText">
+          It allows us to control HTML elements, change CSS styles, handle user events, and create interactive websites.
+        </span>
+      </p>
+
+      <button id="readBtn">Read More</button>
+    </div>
+  </div>
+
+
+  <script>
+    // =====================================================
+    // 1. onclick
+    // =====================================================
+    let clickBtn = document.getElementById("clickBtn");
+    let clickImg = document.getElementById("clickImg");
+    let clickText = document.getElementById("clickText");
+
+    clickBtn.onclick = function () {
+      clickImg.style.filter = "blur(5px)";
+      clickText.style.display = "none";
+    };
+
+
+    // =====================================================
+    // 2. onfocus
+    // =====================================================
+    let focusInput = document.getElementById("focusInput");
+    let focusResult = document.getElementById("focusResult");
+
+    focusInput.onfocus = function () {
+      focusInput.style.backgroundColor = "yellow";
+      focusInput.style.border = "2px solid orange";
+      focusResult.innerHTML = "Input is focused";
+    };
+
+
+    // =====================================================
+    // 3. onblur
+    // =====================================================
+    let blurInput = document.getElementById("blurInput");
+    let blurResult = document.getElementById("blurResult");
+
+    blurInput.onfocus = function () {
+      blurInput.style.backgroundColor = "yellow";
+      blurResult.innerHTML = "You are inside the input";
+    };
+
+    blurInput.onblur = function () {
+      blurInput.style.backgroundColor = null;
+      blurResult.innerHTML = "You left the input";
+    };
+
+
+    // =====================================================
+    // 4. null
+    // =====================================================
+    let nullTitle = document.getElementById("nullTitle");
+    let addColorBtn = document.getElementById("addColorBtn");
+    let removeColorBtn = document.getElementById("removeColorBtn");
+
+    addColorBtn.onclick = function () {
+      nullTitle.style.color = "red";
+      nullTitle.style.backgroundColor = "yellow";
+    };
+
+    removeColorBtn.onclick = function () {
+      nullTitle.style.color = null;
+      nullTitle.style.backgroundColor = null;
+    };
+
+
+    // =====================================================
+    // 5. onkeyup
+    // =====================================================
+    let keyupInput = document.getElementById("keyupInput");
+    let keyupResult = document.getElementById("keyupResult");
+
+    keyupInput.onkeyup = function () {
+      keyupInput.style.width = "300px";
+      keyupInput.style.height = "40px";
+      keyupResult.innerHTML = "You typed: " + keyupInput.value;
+    };
+
+
+    // =====================================================
+    // 6. input.value
+    // =====================================================
+    let valueInput = document.getElementById("valueInput");
+    let valueBtn = document.getElementById("valueBtn");
+    let valueResult = document.getElementById("valueResult");
+
+    valueBtn.onclick = function () {
+      valueResult.innerHTML = "The input value is: " + valueInput.value;
+    };
+
+
+    // =====================================================
+    // 7. toUpperCase()
+    // =====================================================
+    let upperInput = document.getElementById("upperInput");
+
+    upperInput.onkeyup = function () {
+      upperInput.value = upperInput.value.toUpperCase();
+      upperInput.style.color = "red";
+      upperInput.style.fontWeight = "bold";
+    };
+
+
+    // =====================================================
+    // 8. onchange
+    // =====================================================
+    let groupSelect = document.getElementById("groupSelect");
+    let changeResult = document.getElementById("changeResult");
+
+    groupSelect.onchange = function () {
+      changeResult.innerHTML = "You selected: " + groupSelect.value;
+      changeResult.style.backgroundColor = "yellow";
+      changeResult.style.padding = "8px";
+    };
+
+
+    // =====================================================
+    // 9. onload
+    // =====================================================
+    let loadBox = document.getElementById("loadBox");
+
+    window.onload = function () {
+      loadBox.innerHTML = "Page loaded successfully";
+      loadBox.style.backgroundColor = "#d4ffd4";
+      loadBox.style.color = "green";
+      loadBox.style.fontWeight = "bold";
+    };
+
+
+    // =====================================================
+    // 10. onmousemove
+    // =====================================================
+    let moveImg = document.getElementById("moveImg");
+    let moveBtn = document.getElementById("moveBtn");
+
+    moveImg.onmousemove = function () {
+      moveBtn.style.backgroundColor = "gray";
+      moveBtn.style.color = "white";
+      moveBtn.style.width = "200px";
+      moveBtn.style.height = "50px";
+    };
+
+
+    // =====================================================
+    // 11. onmouseout
+    // =====================================================
+    let outImg = document.getElementById("outImg");
+    let outBtn = document.getElementById("outBtn");
+
+    outImg.onmousemove = function () {
+      outBtn.style.backgroundColor = "gray";
+      outBtn.style.color = "white";
+      outBtn.style.width = "200px";
+    };
+
+    outImg.onmouseout = function () {
+      outBtn.style.backgroundColor = null;
+      outBtn.style.color = null;
+      outBtn.style.width = null;
+    };
+
+
+    // =====================================================
+    // 12. setInterval()
+    // =====================================================
+    let intervalCounter = document.getElementById("intervalCounter");
+    let startIntervalBtn = document.getElementById("startIntervalBtn");
+
+    let intervalNumber = 0;
+    let intervalStarted = false;
+
+    startIntervalBtn.onclick = function () {
+      if (intervalStarted === false) {
+        intervalStarted = true;
+
+        setInterval(function () {
+          intervalNumber++;
+          intervalCounter.innerHTML = intervalNumber;
+        }, 1000);
+      }
+    };
+
+
+    // =====================================================
+    // 13. clearInterval()
+    // =====================================================
+    let clearIntervalCounter = document.getElementById("clearIntervalCounter");
+    let startClearIntervalBtn = document.getElementById("startClearIntervalBtn");
+    let stopClearIntervalBtn = document.getElementById("stopClearIntervalBtn");
+
+    let clearIntervalNumber = 0;
+    let myInterval = null;
+
+    startClearIntervalBtn.onclick = function () {
+      if (myInterval === null) {
+        myInterval = setInterval(function () {
+          clearIntervalNumber++;
+          clearIntervalCounter.innerHTML = clearIntervalNumber;
+        }, 1000);
+      }
+    };
+
+    stopClearIntervalBtn.onclick = function () {
+      clearInterval(myInterval);
+      myInterval = null;
+    };
+
+
+    // =====================================================
+    // 14. setTimeout()
+    // =====================================================
+    let timeoutMsg = document.getElementById("timeoutMsg");
+    let startTimeoutBtn = document.getElementById("startTimeoutBtn");
+
+    startTimeoutBtn.onclick = function () {
+      timeoutMsg.innerHTML = "Waiting...";
+
+      setTimeout(function () {
+        timeoutMsg.innerHTML = "Welcome after 3 seconds";
+        timeoutMsg.style.color = "green";
+      }, 3000);
+    };
+
+
+    // =====================================================
+    // 15. clearTimeout()
+    // =====================================================
+    let clearTimeoutMsg = document.getElementById("clearTimeoutMsg");
+    let startClearTimeoutBtn = document.getElementById("startClearTimeoutBtn");
+    let cancelTimeoutBtn = document.getElementById("cancelTimeoutBtn");
+
+    let myTimeout = null;
+
+    startClearTimeoutBtn.onclick = function () {
+      clearTimeoutMsg.innerHTML = "Timer started... wait 5 seconds";
+
+      myTimeout = setTimeout(function () {
+        clearTimeoutMsg.innerHTML = "Hello after 5 seconds";
+        clearTimeoutMsg.style.color = "blue";
+      }, 5000);
+    };
+
+    cancelTimeoutBtn.onclick = function () {
+      clearTimeout(myTimeout);
+      clearTimeoutMsg.innerHTML = "Timer canceled";
+      clearTimeoutMsg.style.color = "red";
+    };
+
+
+    // =====================================================
+    // 16. :target
+    // =====================================================
+    // هذا المثال معمول بالـ CSS فوق، لذلك لا يحتاج JavaScript.
+
+
+    // =====================================================
+    // 17. Read More / Read Less
+    // =====================================================
+    let readBtn = document.getElementById("readBtn");
+    let moreText = document.getElementById("moreText");
+
+    readBtn.onclick = function () {
+      if (moreText.style.display === "inline") {
+        moreText.style.display = "none";
+        readBtn.innerHTML = "Read More";
+      } else {
+        moreText.style.display = "inline";
+        readBtn.innerHTML = "Read Less";
+      }
+    };
+  </script>
+
+</body>
+</html>

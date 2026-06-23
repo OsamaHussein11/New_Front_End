@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Lecture Practice</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 25px;
+        line-height: 1.6;
+      }
+
+      h1 {
+        text-align: center;
+        color: #222;
+      }
+
+      .card {
+        background-color: white;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 10px;
+        max-width: 800px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h2 {
+        color: #0077ff;
+        margin-top: 0;
+      }
+
+      button {
+        padding: 9px 15px;
+        margin: 8px 5px 8px 0;
+        border: none;
+        background-color: #0077ff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      button:hover {
+        background-color: #005fcc;
+      }
+
+      .result {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      img {
+        width: 160px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 8px;
+      }
+
+      input,
+      select {
+        padding: 9px;
+        width: 250px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+        display: block;
+      }
+
+      /* Example 6 */
+      .group-input {
+        display: none;
+        margin-top: 15px;
+      }
+
+      /* Example 7 */
+      .filter-images img {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>JavaScript Lecture - Practical Examples</h1>
+
+    <!-- ================================================== -->
+    <!-- 1. slice() -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>1. slice()</h2>
+
+      <p>
+        الفكرة: نستخدم <b>slice()</b> لقص جزء من النص. البداية تدخل في القص، لكن
+        النهاية لا تدخل.
+      </p>
+
+      <button id="sliceBtn">Apply slice()</button>
+
+      <p id="sliceResult" class="result"></p>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 2. substring() -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>2. substring()</h2>
+
+      <p>الفكرة: <b>substring()</b> تشبه slice، وتستخدم لاقتطاع جزء من النص.</p>
+
+      <button id="substringBtn">Apply substring()</button>
+
+      <p id="substringResult" class="result"></p>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 3. Difference between slice and substring -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>3. الفرق بين slice() و substring()</h2>
+
+      <p>
+        الفرق المهم: <b>slice()</b> تقبل القيم السالبة، أما
+        <b>substring()</b> لا تتعامل مع السالب بنفس الطريقة.
+      </p>
+
+      <button id="compareBtn">Compare</button>
+
+      <p id="compareResult" class="result"></p>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 4. dataset -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>4. dataset / Custom Attribute</h2>
+
+      <p>
+        الفكرة: نخزن قيمة داخل العنصر باستخدام <b>data-</b> ثم نصل لها من
+        JavaScript باستخدام <b>dataset</b>.
+      </p>
+
+      <img
+        id="productImg"
+        src="https://picsum.photos/id/180/200/150"
+        data-name="Laptop"
+        data-price="200"
+      />
+
+      <br />
+
+      <button id="datasetBtn">Show Product Info</button>
+
+      <p id="datasetResult" class="result"></p>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 5. Typewriter Effect -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>5. Typewriter Effect</h2>
+
+      <p>
+        الفكرة: نخزن النص داخل <b>data-text</b>، ثم نعرضه حرفًا حرفًا باستخدام
+        <b>setInterval</b>.
+      </p>
+
+      <p id="typeText" data-text="Welcome to JavaScript Course"></p>
+
+      <button id="typeBtn">Start Typing</button>
+      <button id="resetTypeBtn">Reset</button>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 6. Show input based on select option -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>6. إظهار input حسب اختيار select</h2>
+
+      <p>
+        الفكرة: كل option لها value، وكل input له data-group. إذا كانوا
+        متساويين، نظهر input المناسب.
+      </p>
+
+      <select id="groupSelect">
+        <option value="">Choose group</option>
+        <option value="group1">Group 1</option>
+        <option value="group2">Group 2</option>
+        <option value="group3">Group 3</option>
+      </select>
+
+      <input
+        class="group-input"
+        data-group="group1"
+        type="text"
+        placeholder="Enter your name"
+      />
+
+      <input
+        class="group-input"
+        data-group="group2"
+        type="url"
+        placeholder="Enter your website"
+      />
+
+      <input
+        class="group-input"
+        data-group="group3"
+        type="email"
+        placeholder="Enter your email"
+      />
+
+      <p id="selectResult" class="result"></p>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- 7. Images filter using buttons and dataset -->
+    <!-- ================================================== -->
+    <div class="card">
+      <h2>7. فلترة الصور باستخدام Buttons + dataset</h2>
+
+      <p>
+        الفكرة: كل زر له id، وكل صورة لها data-image. إذا كانت قيمة data-image
+        تساوي id الزر، تظهر الصورة.
+      </p>
+
+      <button class="filter-btn" id="group1">Group 1</button>
+      <button class="filter-btn" id="group2">Group 2</button>
+      <button class="filter-btn" id="group3">Group 3</button>
+      <button id="hideAllBtn">Hide All</button>
+
+      <div class="filter-images">
+        <img src="https://picsum.photos/id/237/200/150" data-image="group1" />
+        <img src="https://picsum.photos/id/238/200/150" data-image="group1" />
+
+        <img src="https://picsum.photos/id/239/200/150" data-image="group2" />
+        <img src="https://picsum.photos/id/240/200/150" data-image="group2" />
+
+        <img src="https://picsum.photos/id/241/200/150" data-image="group3" />
+        <img src="https://picsum.photos/id/242/200/150" data-image="group3" />
+      </div>
+    </div>
+
+    <script>
+      // ==================================================
+      // 1. slice()
+      // ==================================================
+      let sliceBtn = document.getElementById("sliceBtn");
+      let sliceResult = document.getElementById("sliceResult");
+
+      let userName = "Osama Hussein";
+
+      sliceBtn.onclick = function () {
+        let slicedText = userName.slice(0, 5);
+
+        sliceResult.innerHTML =
+          "Original text: " +
+          userName +
+          "<br>" +
+          "After slice(0, 5): " +
+          slicedText;
+      };
+
+      // ==================================================
+      // 2. substring()
+      // ==================================================
+      let substringBtn = document.getElementById("substringBtn");
+      let substringResult = document.getElementById("substringResult");
+
+      let courseName = "JavaScript Course";
+
+      substringBtn.onclick = function () {
+        let substringText = courseName.substring(0, 10);
+
+        substringResult.innerHTML =
+          "Original text: " +
+          courseName +
+          "<br>" +
+          "After substring(0, 10): " +
+          substringText;
+      };
+
+      // ==================================================
+      // 3. Difference between slice and substring
+      // ==================================================
+      let compareBtn = document.getElementById("compareBtn");
+      let compareResult = document.getElementById("compareResult");
+
+      let text = "JavaScript Course";
+
+      compareBtn.onclick = function () {
+        let sliceValue = text.slice(-6);
+        let substringValue = text.substring(-6);
+
+        compareResult.innerHTML =
+          "Original text: " +
+          text +
+          "<br>" +
+          "slice(-6): " +
+          sliceValue +
+          "<br>" +
+          "substring(-6): " +
+          substringValue;
+      };
+
+      // ==================================================
+      // 4. dataset / Custom Attribute
+      // ==================================================
+      let productImg = document.getElementById("productImg");
+      let datasetBtn = document.getElementById("datasetBtn");
+      let datasetResult = document.getElementById("datasetResult");
+
+      datasetBtn.onclick = function () {
+        datasetResult.innerHTML =
+          "Product name: " +
+          productImg.dataset.name +
+          "<br>" +
+          "Product price: " +
+          productImg.dataset.price +
+          "$";
+      };
+
+      // ==================================================
+      // 5. Typewriter Effect
+      // ==================================================
+      let typeText = document.getElementById("typeText");
+      let typeBtn = document.getElementById("typeBtn");
+      let resetTypeBtn = document.getElementById("resetTypeBtn");
+
+      let fullText = typeText.dataset.text;
+      let i = 0;
+      let typeInterval = null;
+
+      typeBtn.onclick = function () {
+        if (typeInterval === null) {
+          typeInterval = setInterval(function () {
+            typeText.innerHTML += fullText[i];
+            i++;
+
+            if (i === fullText.length) {
+              clearInterval(typeInterval);
+              typeInterval = null;
+            }
+          }, 150);
+        }
+      };
+
+      resetTypeBtn.onclick = function () {
+        clearInterval(typeInterval);
+        typeInterval = null;
+        i = 0;
+        typeText.innerHTML = "";
+      };
+
+      // ==================================================
+      // 6. Show input based on select option
+      // ==================================================
+      let groupSelect = document.getElementById("groupSelect");
+      let groupInputs = document.querySelectorAll(".group-input");
+      let selectResult = document.getElementById("selectResult");
+
+      groupSelect.onchange = function () {
+        groupInputs.forEach(function (input) {
+          if (input.dataset.group === groupSelect.value) {
+            input.style.display = "block";
+          } else {
+            input.style.display = "none";
+          }
+        });
+
+        if (groupSelect.value === "") {
+          selectResult.innerHTML = "No group selected";
+        } else {
+          selectResult.innerHTML = "Selected value: " + groupSelect.value;
+        }
+      };
+
+      // ==================================================
+      // 7. Images filter using buttons and dataset
+      // ==================================================
+      let filterButtons = document.querySelectorAll(".filter-btn");
+      let filterImages = document.querySelectorAll(".filter-images img");
+      let hideAllBtn = document.getElementById("hideAllBtn");
+
+      filterButtons.forEach(function (button) {
+        button.onclick = function () {
+          filterImages.forEach(function (image) {
+            if (image.dataset.image === button.id) {
+              image.style.display = "inline-block";
+            } else {
+              image.style.display = "none";
+            }
+          });
+        };
+      });
+
+      hideAllBtn.onclick = function () {
+        filterImages.forEach(function (image) {
+          image.style.display = "none";
+        });
+      };
+    </script>
+  </body>
+</html>

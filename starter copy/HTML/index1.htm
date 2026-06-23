@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript 15 Points Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 25px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      color: #0077ff;
+      margin-top: 0;
+    }
+
+    button {
+      padding: 9px 15px;
+      margin-top: 10px;
+      border: none;
+      background-color: #0077ff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+
+    img {
+      width: 220px;
+      height: 150px;
+      border-radius: 8px;
+      display: block;
+      margin: 10px 0;
+      transition: 0.3s;
+    }
+
+    .box {
+      width: 220px;
+      padding: 20px;
+      background-color: #eee;
+      text-align: center;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    /* خاص بالنقطة 4 و 5 */
+    .box-style {
+      background-color: orange;
+      color: white;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    /* خاص بالنقطة 6 */
+    .active {
+      color: red;
+      font-weight: bold;
+    }
+
+    /* خاص بالنقطة 7 */
+    .dark-mode {
+      background-color: #222;
+      color: white;
+    }
+
+    .dark-mode .card {
+      background-color: #333;
+      color: white;
+    }
+
+    .dark-mode h1 {
+      color: white;
+    }
+
+    .dark-mode .card h2 {
+      color: #66aaff;
+    }
+
+    .result {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>JavaScript Lecture Practice - 15 Points</h1>
+
+
+  <!-- 1. getAttribute -->
+  <div class="card">
+    <h2>1. getAttribute()</h2>
+    <p>الفكرة: نستخدمها لجلب قيمة Attribute معين من العنصر.</p>
+
+    <img id="imgGet" src="https://picsum.photos/id/237/220/150" title="This is the first image">
+
+    <button id="btnGet">Get Image Title</button>
+
+    <p id="resultGet" class="result"></p>
+  </div>
+
+
+  <!-- 2. setAttribute -->
+  <div class="card">
+    <h2>2. setAttribute()</h2>
+    <p>الفكرة: نستخدمها لتغيير قيمة Attribute أو إضافة Attribute جديد.</p>
+
+    <img id="imgSet" src="https://picsum.photos/id/237/220/150">
+
+    <button id="btnSet">Change Image</button>
+  </div>
+
+
+  <!-- 3. style -->
+  <div class="card">
+    <h2>3. Change CSS Using style</h2>
+    <p>الفكرة: نستخدم style لتغيير خصائص CSS من JavaScript.</p>
+
+    <h3 id="styleTitle">Change my style</h3>
+
+    <button id="btnStyle">Change Style</button>
+  </div>
+
+
+  <!-- 4. classList.add -->
+  <div class="card">
+    <h2>4. classList.add()</h2>
+    <p>الفكرة: نستخدمها لإضافة كلاس على العنصر.</p>
+
+    <div id="boxAdd" class="box">Box without class</div>
+
+    <button id="btnAdd">Add Class</button>
+  </div>
+
+
+  <!-- 5. classList.remove -->
+  <div class="card">
+    <h2>5. classList.remove()</h2>
+    <p>الفكرة: نستخدمها لحذف كلاس من العنصر.</p>
+
+    <div id="boxRemove" class="box box-style">Box with class</div>
+
+    <button id="btnRemove">Remove Class</button>
+  </div>
+
+
+  <!-- 6. classList.contains -->
+  <div class="card">
+    <h2>6. classList.contains()</h2>
+    <p>الفكرة: تفحص هل العنصر يحتوي على كلاس معين أم لا.</p>
+
+    <h3 id="containsTitle" class="active">I have active class</h3>
+
+    <button id="btnContains">Check Class</button>
+
+    <p id="resultContains" class="result"></p>
+  </div>
+
+
+  <!-- 7. classList.toggle -->
+  <div class="card">
+    <h2>7. classList.toggle()</h2>
+    <p>الفكرة: إذا الكلاس موجود تحذفه، وإذا مش موجود تضيفه.</p>
+
+    <button id="btnToggle">Toggle Dark Mode</button>
+  </div>
+
+
+  <!-- 8. alert -->
+  <div class="card">
+    <h2>8. alert()</h2>
+    <p>الفكرة: تعرض رسالة تنبيه فيها زر OK فقط.</p>
+
+    <button id="btnAlert">Show Alert</button>
+  </div>
+
+
+  <!-- 9. confirm -->
+  <div class="card">
+    <h2>9. confirm()</h2>
+    <p>الفكرة: تعرض رسالة تأكيد فيها OK و Cancel.</p>
+
+    <button id="btnConfirm">Confirm Delete</button>
+
+    <p id="resultConfirm" class="result"></p>
+  </div>
+
+
+  <!-- 10. prompt -->
+  <div class="card">
+    <h2>10. prompt()</h2>
+    <p>الفكرة: تطلب من المستخدم إدخال قيمة.</p>
+
+    <h3 id="promptTitle">Hello</h3>
+
+    <button id="btnPrompt">Enter Name</button>
+  </div>
+
+
+  <!-- 11. onclick -->
+  <div class="card">
+    <h2>11. onclick</h2>
+    <p>الفكرة: ينفذ كود عند الضغط على العنصر ضغطة واحدة.</p>
+
+    <h3 id="clickTitle">Old Text</h3>
+
+    <button id="btnClick">Click Me</button>
+  </div>
+
+
+  <!-- 12. Function جاهزة مع Event -->
+  <div class="card">
+    <h2>12. Named Function With Event</h2>
+    <p>الفكرة: نجهز function لحالها ثم نستدعي اسمها عند الحدث بدون أقواس.</p>
+
+    <h3 id="functionTitle">My color will change</h3>
+
+    <button id="btnFunction">Change Color</button>
+  </div>
+
+
+  <!-- 13. ondblclick -->
+  <div class="card">
+    <h2>13. ondblclick</h2>
+    <p>الفكرة: ينفذ الكود عند الضغط ضغطتين على العنصر.</p>
+
+    <h3 id="dblTitle">Double click the button</h3>
+
+    <button id="btnDbl">Double Click Me</button>
+  </div>
+
+
+  <!-- 14. onmouseover -->
+  <div class="card">
+    <h2>14. onmouseover</h2>
+    <p>الفكرة: ينفذ الكود لما الماوس يدخل على العنصر.</p>
+
+    <img id="imgOver" src="https://picsum.photos/id/1025/220/150">
+
+    <p id="resultOver" class="result">Put mouse over the image</p>
+  </div>
+
+
+  <!-- 15. onmouseout -->
+  <div class="card">
+    <h2>15. onmouseout</h2>
+    <p>الفكرة: ينفذ الكود لما الماوس يخرج من العنصر.</p>
+
+    <img id="imgOut" src="https://picsum.photos/id/1062/220/150">
+
+    <p id="resultOut" class="result">Move mouse over image then move it out</p>
+  </div>
+
+
+  <script>
+    // ========================================
+    // 1. getAttribute()
+    // ========================================
+    let imgGet = document.getElementById("imgGet");
+    let btnGet = document.getElementById("btnGet");
+    let resultGet = document.getElementById("resultGet");
+
+    btnGet.onclick = function () {
+      let titleValue = imgGet.getAttribute("title");
+      resultGet.innerHTML = "The image title is: " + titleValue;
+    };
+
+
+    // ========================================
+    // 2. setAttribute()
+    // ========================================
+    let imgSet = document.getElementById("imgSet");
+    let btnSet = document.getElementById("btnSet");
+
+    btnSet.onclick = function () {
+      imgSet.setAttribute("src", "https://picsum.photos/id/1025/220/150");
+      imgSet.setAttribute("title", "Image changed by JavaScript");
+    };
+
+
+    // ========================================
+    // 3. Change CSS Using style
+    // ========================================
+    let styleTitle = document.getElementById("styleTitle");
+    let btnStyle = document.getElementById("btnStyle");
+
+    btnStyle.onclick = function () {
+      styleTitle.style.color = "red";
+      styleTitle.style.backgroundColor = "yellow";
+      styleTitle.style.fontSize = "30px";
+      styleTitle.style.padding = "10px";
+    };
+
+
+    // ========================================
+    // 4. classList.add()
+    // ========================================
+    let boxAdd = document.getElementById("boxAdd");
+    let btnAdd = document.getElementById("btnAdd");
+
+    btnAdd.onclick = function () {
+      boxAdd.classList.add("box-style");
+      boxAdd.innerHTML = "Class added";
+    };
+
+
+    // ========================================
+    // 5. classList.remove()
+    // ========================================
+    let boxRemove = document.getElementById("boxRemove");
+    let btnRemove = document.getElementById("btnRemove");
+
+    btnRemove.onclick = function () {
+      boxRemove.classList.remove("box-style");
+      boxRemove.innerHTML = "Class removed";
+    };
+
+
+    // ========================================
+    // 6. classList.contains()
+    // ========================================
+    let containsTitle = document.getElementById("containsTitle");
+    let btnContains = document.getElementById("btnContains");
+    let resultContains = document.getElementById("resultContains");
+
+    btnContains.onclick = function () {
+      if (containsTitle.classList.contains("active")) {
+        resultContains.innerHTML = "Yes, the class active exists";
+      } else {
+        resultContains.innerHTML = "No, the class active does not exist";
+      }
+    };
+
+
+    // ========================================
+    // 7. classList.toggle()
+    // ========================================
+    let btnToggle = document.getElementById("btnToggle");
+
+    btnToggle.onclick = function () {
+      document.body.classList.toggle("dark-mode");
+    };
+
+
+    // ========================================
+    // 8. alert()
+    // ========================================
+    let btnAlert = document.getElementById("btnAlert");
+
+    btnAlert.onclick = function () {
+      alert("Welcome to JavaScript");
+    };
+
+
+    // ========================================
+    // 9. confirm()
+    // ========================================
+    let btnConfirm = document.getElementById("btnConfirm");
+    let resultConfirm = document.getElementById("resultConfirm");
+
+    btnConfirm.onclick = function () {
+      let answer = confirm("Are you sure you want to delete?");
+
+      if (answer === true) {
+        resultConfirm.innerHTML = "Deleted successfully";
+      } else {
+        resultConfirm.innerHTML = "Delete canceled";
+      }
+    };
+
+
+    // ========================================
+    // 10. prompt()
+    // ========================================
+    let btnPrompt = document.getElementById("btnPrompt");
+    let promptTitle = document.getElementById("promptTitle");
+
+    btnPrompt.onclick = function () {
+      let userName = prompt("Enter your name:");
+
+      promptTitle.innerHTML = "Hello " + userName;
+    };
+
+
+    // ========================================
+    // 11. onclick
+    // ========================================
+    let btnClick = document.getElementById("btnClick");
+    let clickTitle = document.getElementById("clickTitle");
+
+    btnClick.onclick = function () {
+      clickTitle.innerHTML = "Text changed after one click";
+    };
+
+
+    // ========================================
+    // 12. Named Function With Event
+    // ========================================
+    let btnFunction = document.getElementById("btnFunction");
+    let functionTitle = document.getElementById("functionTitle");
+
+    function changeTitleColor() {
+      functionTitle.style.color = "blue";
+      functionTitle.style.fontSize = "28px";
+    }
+
+    btnFunction.onclick = changeTitleColor;
+
+
+    // ========================================
+    // 13. ondblclick
+    // ========================================
+    let btnDbl = document.getElementById("btnDbl");
+    let dblTitle = document.getElementById("dblTitle");
+
+    btnDbl.ondblclick = function () {
+      dblTitle.innerHTML = "You double clicked the button";
+      dblTitle.style.color = "purple";
+    };
+
+
+    // ========================================
+    // 14. onmouseover
+    // ========================================
+    let imgOver = document.getElementById("imgOver");
+    let resultOver = document.getElementById("resultOver");
+
+    imgOver.onmouseover = function () {
+      imgOver.style.opacity = "0.5";
+      resultOver.innerHTML = "Mouse is over the image";
+    };
+
+
+    // ========================================
+    // 15. onmouseout
+    // ========================================
+    let imgOut = document.getElementById("imgOut");
+    let resultOut = document.getElementById("resultOut");
+
+    imgOut.onmouseover = function () {
+      imgOut.style.opacity = "0.5";
+      resultOut.innerHTML = "Mouse is over the image";
+    };
+
+    imgOut.onmouseout = function () {
+      imgOut.style.opacity = "1";
+      resultOut.innerHTML = "Mouse left the image";
+    };
+  </script>
+
+</body>
+</html>
